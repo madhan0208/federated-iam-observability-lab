@@ -1,0 +1,75 @@
+{
+    "meta": {
+        "type": "db",
+        "canSave": true,
+        "canEdit": true,
+        "canAdmin": true,
+        "canStar": true,
+        "canDelete": true,
+        "slug": "iam-observability",
+        "url": "/d/bc7f0838-fc43-4eed-a80f-76f39b67b3fa/iam-observability",
+        "expires": "0001-01-01T00:00:00Z",
+        "created": "2026-06-14T23:26:54Z",
+        "updated": "2026-06-14T23:26:54Z",
+        "updatedBy": "Anonymous",
+        "createdBy": "Anonymous",
+        "version": 1,
+        "hasAcl": false,
+        "isFolder": false,
+        "apiVersion": "v0alpha1",
+        "folderId": 0,
+        "folderUid": "",
+        "folderTitle": "General",
+        "folderUrl": "",
+        "provisioned": false,
+        "provisionedExternalId": "",
+        "annotationsPermissions": {
+            "dashboard": {
+                "canAdd": true,
+                "canEdit": true,
+                "canDelete": true
+            }
+        }
+    },
+    "dashboard": {
+        "id": 3652755770150912,
+        "panels": [
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 6,
+                    "x": 0,
+                    "y": 0
+                },
+                "targets": [
+                    {
+                        "expr": "sum(rate(http_server_duration_count[1m]))",
+                        "refId": "A"
+                    }
+                ],
+                "title": "Auth Request Rate",
+                "type": "stat"
+            },
+            {
+                "gridPos": {
+                    "h": 4,
+                    "w": 6,
+                    "x": 6,
+                    "y": 0
+                },
+                "targets": [
+                    {
+                        "expr": "histogram_quantile(0.95, rate(http_server_duration_bucket[5m]))",
+                        "refId": "A"
+                    }
+                ],
+                "title": "Auth Latency p95",
+                "type": "stat"
+            }
+        ],
+        "schemaVersion": 36,
+        "title": "IAM Observability",
+        "uid": "bc7f0838-fc43-4eed-a80f-76f39b67b3fa",
+        "version": 1
+    }
+}
